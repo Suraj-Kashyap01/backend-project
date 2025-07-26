@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | Scheduler</title>
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <h1>Welcome Back!</h1>
+      <!-- <p>Log in to access your schedule, leave requests, and more.</p> -->
+    </div>
+    <div class="right-panel">
+      <h2>Login</h2>
+      <form class="loginform">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Enter your email" id="email" required />
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Enter your password" id="pass"required />
+        Role Selection
+        <select name="" id="role">
+                    <option value="" id="role" disabled selected >Role Selection</option>
+                    <option value="admin">Admin</option>
+                    <option value="teacher">Teacher</option>
+                </select>
+        <button type="submit">Login</button>
+        <p class="switch-link">Don't have an account? <a href="http://localhost:9000/signup">Sign Up</a></p>
+      </form>
+    </div>
+  </div>
+  <script src="/js/login.js"></script>
+</body>
+</html>

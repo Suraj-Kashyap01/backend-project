@@ -1,0 +1,3 @@
+function timetable(req,res){
+    
+}

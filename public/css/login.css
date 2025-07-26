@@ -1,0 +1,112 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  height: 100vh;
+  background-color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  width: 80%;
+  max-width: 1000px;
+  height: 500px;
+  background-color: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.left-panel {
+  flex: 1;
+  background:#416fef;
+  color: white;
+  padding: 50px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.left-panel h1 {
+  font-size: 2.5em;
+  margin-bottom: 15px;
+}
+
+.left-panel p {
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+.right-panel {
+  flex: 1;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right-panel h2 {
+  font-size: 2em;
+  /* color: #333; */
+  margin-bottom: 20px;
+}
+
+.loginform label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: #444;
+  font-weight: 500;
+}
+
+.loginform input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.loginform button {
+  width: 100%;
+  padding: 12px;
+  background:#416fef;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 6px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.loginform button:hover {
+  background: #5e00c4;
+}
+
+.switch-link {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 0.95em;
+}
+
+.switch-link a {
+  color:#416fef;;
+  text-decoration: none;
+  font-weight: bold;
+}
+#role{
+
+ width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}

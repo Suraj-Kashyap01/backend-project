@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Time Table</title>
+  <link rel="stylesheet" href="/css/admin.css">
+  <style>
+    .t-table,
+    .table-cont {
+      width: 100%;
+      height: 400px;
+      overflow: auto;
+      box-sizing: border-box;
+    }
+
+    th,
+    td {
+      padding: 8px;
+      text-align: center;
+      border: 1px solid #ccc;
+    }
+
+    h2 {
+      margin-top: 40px;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- Sidebar  -->
+    <div class="sidebar">
+      <h2><span class="brand-blue">Schedule</span> <span class="brand-pink">Sync</span></h2>
+      <ul>
+        <li>📊 Dashboard</li>
+        <li>📅 Calendar</li>
+        <li>🛂 ApproveLeave</li>
+        <li>📥 Inbox</li>
+      </ul>
+
+      <p>Current View</p>
+      <div class="view-box">🤝 Meeting</div>
+      <div class="view-box">☁ Scheduling</div>
+
+      <button class="event-btn">Upcoming Event</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+      <!-- Top Bar -->
+      <div class="top-bar">
+        <div>
+          <p><strong>Today</strong><br>11/7/2025</p>
+        </div>
+        <div>
+          <p class="time">12:50:37 pm</p>
+        </div>
+        <div>
+          <p>Logged in as<br><strong>AdminName (Admin)</strong></p>
+        </div>
+      </div>
+
+      <!-- Timetable Header -->
+      <div class="timetable-header">
+        <!-- <form id="addtimetable"> -->
+        <form id="addtimetable" action="/admin/addtimetable" method="POST">
+
+          <select name="teacherEmail" id="userEmail" required>
+            <option value="" disabled selected> 📧 Select User Email</option>
+            <% data.forEach(user=>{%>
+              <% if(user.role=="teacher" ) {%>
+                <option value="<%= user.email %>">👤 <%= user.name %>, 📧 <%= user.email %>
+                </option>
+                <% } %>
+                  <% }); %>
+          </select>
+          <button type="submit" class="add-btn" id="show-table">Add Time Table Details</button>
+        </form>
+      </div>
+
+      <!-- Render timetable for each teacher -->
+
+      <h2>All Teachers - Full Lecture Details</h2>
+      <button class="add-btn">Add Time Table</button>
+
+      <div class="table-cont">
+
+        <table>
+          <tr>
+            <th>Days/Time</th>
+            <th>Period 1</th>
+            <th>Period 2</th>
+            <th>Period 3</th>
+            <th>Period 4</th>
+            <th>Period 5</th>
+            <th>Period 6</th>
+            <th>Period 7</th>
+            <th>Period 8</th>
+          </tr>
+
+          <% const days=["Monday", "Tuesday" , "Wednesday" , "Thursday" , "Friday" , "Saturday" ]; %>
+            <% data.forEach(it={ %>
+              <% days.forEach(day=> { %>
+                <tr>
+                  <td>
+                    <%= day %>
+                  </td>
+                  <% for (let period=1; period < 9; period++) { %>
+                    <!-- <% //let match=data.lecture.find(lec=> lec?.day?.toLowerCase() == day?.toLowerCase() && lec?.lecture ==period?.toString()); %> -->
+                    <% //if (match) { %>
+                      <td>
+                        <strong>
+                          <!-- <%= it.subject %> -->
+                        </strong><br>
+                        Teacher: <%= it.name %><br>
+                          Room: <%= it.room %><br>
+                            Time: <%= it.start %> - <%= it.end %>
+
+                      </td>
+                      <% } %>
+                </tr>
+                <% }); %>
+                  <% }) %>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Add Time Table Button
+    let btn = document.querySelector('#add-table');
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      let teacherEmail = document.getElementById("userEmail").value;
+      if (teacherEmail) {
+        window.location.href = "/admin/addtimetable";
+      } else {
+        alert("Please select a user email first.");
+      }
+    });
+  </script>
+  <!-- <script>
+  let addtimetable = document.getElementById("addtimetable");
+
+  addtimetable.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    
+    // Get selected email at the time of submission
+    let teacherEmail = document.getElementById("userEmail").value;
+
+    try {
+      let response = await fetch("/admin/addtimetable", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          teacherEmail: teacherEmail
+        })
+      });
+      let data = await response.json();
+      console.log(data);    
+      if (response.ok) {
+        alert("Time Table Added");
+        window.location.href = "/admin/addtimetable";
+      } else {
+        alert("Failed to add Time Table");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred.");
+    }
+  });
+</script> -->
+</body>
+
+</html>

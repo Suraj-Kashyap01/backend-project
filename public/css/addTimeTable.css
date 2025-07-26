@@ -1,0 +1,78 @@
+    body {
+  background-color: #101010;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form-container {
+  background-color: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  width: 400px;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.05);
+}
+
+.form-container h2 {
+  color:darkorange;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin: 0.8rem 0 0.3rem;
+  font-weight: 500;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  /* margin-bottom: 12px; */
+}
+
+input:focus, select:focus {
+  border-color:rgb(243, 118, 77);
+  outline: none;
+}
+
+.time-fields {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.time-fields div {
+  flex: 1;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+  gap: 10px;
+}
+
+.cancel-btn, .save-btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+}
+
+.cancel-btn {
+  background-color: #ddd;
+  color: #333;
+}
+
+.save-btn {
+  background-color:rgb(240, 90, 41);;
+  color: #fff;
+}
