@@ -11,10 +11,10 @@ function sessionLayer() {
 export function checkValidation(req, res, next) {
     // console.log(req.session)
     if (req.session.isAuthenticated) {
-        console.log("true")
+        // console.log("true")
         return next();
     }else{
-    return res.redirect('/login')
+    return res.redirect('/auth/login')
     }
 }
 export function isAdmin(req, res, next) {

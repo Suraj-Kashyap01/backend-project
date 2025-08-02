@@ -1,64 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <title>Schedule Sync</title>
+  <title>teacher Page</title>
   <link rel="stylesheet" href="/css/teacher.css">
 </head>
-
 <body>
-  <div class="container">
+  <div class="teacher-container">
 
     <!-- Sidebar -->
     <div class="sidebar">
       <h2><span style="color:purple;">Schedule</span> <span style="color:deeppink;">Sync</span></h2>
       <ul>
-        <li>📊 Dashboard</li>
-        <li>📅 Calendar</li>
-        <li>🛂 ApproveLeave</li>
-        <li>📥 Inbox</li>
+        <button class="clickbtn">📊 Dashboard</button>
+        <button class="clickbtn">📅 Calendar</button>
+        <!-- <button class="clickbtn">🛂 ApproveLeave</button> -->
+        <button id="leave"class="clickbtn" >🛂 Request Leave</button>
+        <button>📥 Inbox</button>
       </ul>
 
       <p>Current View</p>
       <div class="view-box selected">🤝 Meeting</div>
-       <form action="/teacherpage/leave" method="GET">
-      <button class="view-box" >☁ Scheduling</button>
-      </form>
+       <button class="event-btn" id="view-box">☁ Scheduling</button> 
+      
+      <!-- <button id="leave">LeaveSection</button> -->
       <button class="event-btn">Upcoming Event</button>
     </div>
 
     <!-- Main Content -->
     <div class="main">
       <div class="top-bar">
-        <div>
+        <div class="time">
           <p><strong>Today</strong><br>
-            <%= Date.now()%>
+           <%= new Date().toLocaleDateString() %>   <!-- Only Date -->
+           <%= new Date().toLocaleTimeString() %>   <!-- Only Time -->
+
           </p>
         </div>
-        <div>
-          <p class="time">12:53:18 pm</p>
-        </div>
+       <h3>teacher page</h3>
         <div>
           <p>Logged in as<br><strong>
               <%= teacher.email %>
             </strong></p>
+                      <a href="http://localhost:9000/auth/logout">Logout</a>
+
             <% if (teacher.uploadsFileName!=null) { %>
-             <img src="/uploads/<%=teacher.uploadsFileName %>" alt="" height="70px" width="80px">
+             <img src="/uploads/<%=teacher.uploadsFileName %>" alt="" height="" width="">
             <% } else { %>
               <% console.log("file not uploads");%>
               <p>No image uploaded</p>
                <% } %>
              
-          <form action="/teacher/page/uploads" method="post" enctype="multipart/form-data">
-            <input type="file" name="filedata" >
-      
-            <button type="submit">Uploads</button>
-          </form>
+          <!-- <form action="/teacher/page/uploads" method="post" enctype="multipart/form-data">
+            <input type="file" name="filedata" > -->
+            <!-- <button type="submit">Uploads</button>
+          </form> -->
         </div>
       </div>
       <!-- Time Table -->
-      <table>
+      <table class="t-table">
         <tr>
           <th>Days/Time</th>
           <th>Period 1</th>
@@ -71,15 +71,15 @@
           <th>Period 8</th>
         </tr>
 
-        <% const days=["Monday", "Tuesday" , "Wednesday" , "Thursday" , "Friday" , "Saturday" ]; %>
+        <% const days=["monday", "tuesday" , "wednesday" , "thursday" , "friday" , "saturday" ]; %>
           <% days.forEach(day=> { %>
             <tr>
               <td>
                 <%= day %>
               </td>
               <% for (let period=1; period < 9; period++) { %>
-                <% let match=teacher.lecture.find(lec=> lec?.day?.toLowerCase() == day?.toLowerCase() && lec?.lecture ==
-                  period?.toString()); %>
+                <% let match=lectures.find(lec=> lec?.day?.toLowerCase() == day?.toLowerCase() && lec?.lecture == period?.toString()); %>
+      
                   <% if (match) { %>
                     <td>
                       <strong>
@@ -87,18 +87,35 @@
                       </strong><br>
                       Teacher: <%= match.name %><br>
                         Room: <%= match.room %><br>
-                          Time: <%= match.start %> - <%= match.end %>
-
+                        Time: <%= match.start %> - <%= match.end %>
                     </td>
                     <% } else { %>
                       <td>-</td>
                       <% } %>
-                        <% } %>
+                     <% } %>
             </tr>
             <% }); %>
       </table>
     </div>
   </div>
-  
+  <div class="teacher-leave">  
+    <h1>Leave request Form</h1>
+        <label for="day">Date</label>
+        <!-- <select name="day" id="day">
+            <option value="monday">monday</option>
+            <option value="tuesday">tuesday</option>
+            <option value="wednesday">wednesday</option>
+            <option value="thursday">thursday</option>
+            <option value="friday">friday</option>
+            <option value="saturday">saturday</option>
+        </select> -->
+        From: <input type="date" name="date" value="date" class="date" id="from">
+        To: <input type="date" name="date" value="date" class="date" id="to">
+        <label for="text">Reason</label>
+        <textarea name="text" id="text" cols="50" rows="40" placeholder="Reason of leave"></textarea>
+        <button id="cancel">Cancel</button>
+        <button type="submit" id="submit-btn">Submit</button>
+  </div>
+  <script src="/js/teacher.js"></script>
 </body>
 </html>

@@ -1,5 +1,4 @@
 import fs from "fs/promises";
-
 export const readFileCustom = async (filePath) => {
   try {
     const data = await fs.readFile(filePath, 'utf-8')
@@ -7,6 +6,7 @@ export const readFileCustom = async (filePath) => {
     return JSON.parse(data);
   } catch (error) {
     console.log(error);
+
     return null;
   }
 }

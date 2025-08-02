@@ -3,19 +3,19 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   font-family: sans-serif;
   background-color: #f3f6fb;
 }
-
 .container {
   display: flex;
 }
-
+.fullpage{
+  display: flex;
+}
 /* Sidebar */
 .sidebar {
-  width: 230px;
+  width: 200px;
   background-color: white;
   height: 100vh;
   padding: 20px;
@@ -46,11 +46,6 @@ body {
   color: #555;
 }
 
-
-
-
-
-
 .view-box {
   background-color: #eef2fb;
   padding: 10px;
@@ -73,7 +68,7 @@ body {
 /* Main */
 .main {
   flex: 1;
-  padding: 20px 40px;
+  padding: 10px 20px;
 }
 
 /* Top Bar */
@@ -81,8 +76,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
-  padding-bottom: 10px;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
   border-bottom: 1px solid #ccc;
 }
 
@@ -91,11 +86,14 @@ body {
 }
 
 /* Timetable Header */
+
 .timetable-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 25px 0;
+  margin: 15px 0;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .timetable-header h3 {
@@ -124,32 +122,196 @@ table {
   width: 100%;
   border-collapse: collapse;
   background-color: white;
-  height: 75%;
+  /* height: auto; */
 }
-
-/* th, td {
-  border: 1px solid #ddd;
-  padding: 12px;
-  text-align: center;
-} */
 
 th {
   background-color: #f0f4ff;
 }
 
+.t-table, .table-cont {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 500px;
+}
 
- .t-table,.table-cont {
-      width: 100%;
-      height:400px;
-      overflow: auto;
-      box-sizing: border-box;
-    }
-    th, td {
-      padding: 8px;
-      text-align: center;
-      border: 1px solid #ccc;
-    }
-    h2 {
-      margin-top: 40px;
-      color: #333;
-    }
+th, td {
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+h2 {
+  margin-top: 15px;
+  color: #333;
+}
+
+/* Time table form popup */
+/* second page addtime table css */
+
+#timetable-page {
+  display: none;
+  position:fixed;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 450px;
+  height: 90%;
+  padding: 20px;
+  background: white;
+  border: 2px solid purple;
+  box-shadow: 0 0 10px #999;
+  z-index: 10;
+}
+
+.blur {
+  filter: blur(4px);
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.6;
+}
+
+/* Form */
+/* form-container {
+  background-color: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  width: 100%;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.05);
+  margin-bottom: 250px;
+} */
+
+.form-container h2 {
+  color: darkorange;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin: 0.8rem 0 0.3rem;
+  font-weight: 500;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+input:focus, select:focus {
+  border-color: rgb(243, 118, 77);
+  outline: none;
+}
+
+.time-fields {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.time-fields div {
+  flex: 1;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+  gap: 10px;
+}
+
+.cancel-btn, .save-btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+}
+
+.cancel-btn {
+  background-color: #ddd;
+  color: #333;
+}
+
+.save-btn {
+  background-color: rgb(240, 90, 41);
+  color: #fff;
+}
+/* leave request css */
+.approve-leave-section{
+  display: flex;
+  flex-direction: column;
+
+}
+.section{
+  margin: 20px 0;
+  width: 500px
+}
+/* .leaveBox{
+  background-color:#4b7bec;
+  display: inline-block;
+  border: 2px solid black;
+  height: 170px;
+} */
+/* css */
+.approve-leave-section {
+  /* display: flex; */
+  display: none;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+  background-color:#aaa;
+}
+.leave-card {
+
+  background-color: #fffbf6;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 10px;
+  border: 1px solid yellow;
+}
+
+.leave-card h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.leave-card p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.leave-card button {
+  margin-top: 10px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+#approve {
+  background: #28a745;
+  color: white;
+  margin-right: 10px;
+}
+#approve:hover{
+    background: #1a8a34;
+}
+
+#reject {
+  background: #dc3545;
+  color: white;
+}
+#reject:hover{
+  background: #9b2732;
+}

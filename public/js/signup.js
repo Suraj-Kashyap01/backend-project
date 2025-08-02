@@ -2,7 +2,7 @@ let signupform=document.getElementById("signupform");
 
 signupform.addEventListener("submit",async(event)=>{
     event.preventDefault()
-    let response= await fetch("/signup/",{
+    let response= await fetch("/auth/signup/",{
         method:"POST",
         headers:{
             "Content-Type":"application/json",
@@ -14,6 +14,14 @@ signupform.addEventListener("submit",async(event)=>{
             role:document.getElementById("role").value,
         }),
     })
-    if(response.ok)
-     window.location.href='/login'
+    if(response.ok){
+        alert("Signup successful!");
+     window.location.href='/auth/login';
+    }
+    else if(response.status==400){
+        alert("User already exists")
+    }
+    else {
+  alert( "Signup failed!");
+}
 });

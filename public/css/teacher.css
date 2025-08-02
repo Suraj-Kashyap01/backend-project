@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
 }
 
 body {
@@ -9,17 +10,17 @@ body {
   background-color: #f7f7f7;
 }
 
-.container {
+.teacher-container{
   display: flex;
 }
-
 /* Sidebar */
 .sidebar {
   width: 250px;
   background-color: white;
   padding: 20px;
   height: 100vh;
-  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+
 }
 
 .sidebar h2 {
@@ -28,12 +29,28 @@ body {
 
 .sidebar ul {
   list-style: none;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
-
-.sidebar ul li {
+.sidebar button{
+  padding: 10px;
+}
+/* .sidebar ul li {
   margin: 10px 0;
   font-weight: bold;
+} */
+
+.clickbtn {
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+#leave {
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.clickbtn:hover {
+  background-color:  #0543b5;
 }
 
 .sidebar p {
@@ -59,7 +76,7 @@ body {
   margin-top: 30px;
   padding: 10px;
   width: 100%;
-  background-color: #357bfc;
+  background-color:dodgerblue;
   color: white;
   border: none;
   border-radius: 5px;
@@ -69,7 +86,8 @@ body {
 /* Main */
 .main {
   flex: 1;
-  padding: 20px;
+  padding: 10px;
+  /* display: inline; */
 }
 
 /* Top bar */
@@ -77,8 +95,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
-  padding-bottom: 10px;
+  /* margin-bottom: 30px;
+  padding-bottom: 10px; */
   border-bottom: 1px solid #ccc;
 }
 
@@ -91,9 +109,11 @@ table {
   width: 100%;
   border-collapse: collapse;
   background-color: #fafafa;
+  height: 80vh;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #ddd;
   padding: 12px;
   text-align: center;
@@ -101,4 +121,84 @@ th, td {
 
 th {
   background-color: #f2f2f2;
+}
+
+/* teacher leave page  */
+.teacher-leave{
+  display: none;
+  position:fixed;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 450px;
+  height: 90%;
+  padding: 20px;
+  background: white;
+  border: 2px solid purple;
+  box-shadow: 0 0 10px #999;
+  z-index: 10;
+}
+
+.blur {
+  filter: blur(4px);
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.6;
+}
+
+
+form {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+textarea {
+  height: 100px;
+}
+
+button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+.date{
+  padding: 10px;
+  width: 140px;
+  height: 30px;
+  border: 1.5px solid black;
 }
